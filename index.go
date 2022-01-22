@@ -1,17 +1,8 @@
 package main
 
-import "fmt"
-
-type Token struct {
-    value string
-    ocurrencies string
-    position int
-}
-
-type Document struct {
-    tokens []Token
-    content string
-}
+import (
+    "fmt"
+)
 
 type InvertedIndex struct {
     m map[string][]*Document
@@ -21,7 +12,6 @@ func NewInvertedIndex() InvertedIndex {
     var i InvertedIndex
     i.m = make(map[string][]*Document)
     return i
-    //return InvertedIndex{m:= make(map[string][]Document, d:= make([]Document))}
 }
 
 func (i *InvertedIndex) indexDocumentWithToken(token string, d *Document) {
@@ -50,18 +40,3 @@ func (i *InvertedIndex) findByToken(t string) {
     }
 }
 
-func main() {
-    i := NewInvertedIndex()
-    d := Document{
-        content: "a fenda que abunda força",
-        tokens: []Token{
-            Token{value: "a"},
-            Token{value: "fenda"},
-            Token{value: "que"},
-            Token{value: "abunda"},
-            Token{value: "força"},
-        },
-    }
-    i.insertDocument(d)
-    i.findByToken("abunda")
-}
