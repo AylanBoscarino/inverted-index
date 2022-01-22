@@ -1,11 +1,15 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "github.com/AylanBoscarino/inverted-index/core"
+)
 
 func main() {
-    i := NewInvertedIndex()
-    d := NewDocument("a fenda que abunda força")
-    i.insertDocument(d)
+    i := core.NewInvertedIndex()
+
+    d := core.NewDocument("a fenda que abunda força")
+    i.InsertDocument(d)
     fmt.Println(i)
-    i.findByToken("abunda")
+    i.FindByToken("abunda")
 }

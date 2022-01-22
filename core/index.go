@@ -1,4 +1,4 @@
-package main
+package core
 
 import (
     "fmt"
@@ -22,13 +22,13 @@ func (i *InvertedIndex) indexDocumentWithToken(token string, d *Document) {
     i.m[token] = append(docs, d)
 }
 
-func (i *InvertedIndex) insertDocument(d Document) {
+func (i *InvertedIndex) InsertDocument(d Document) {
     for _, token := range d.tokens {
         i.indexDocumentWithToken(token.value, &d)
     }
 }
 
-func (i *InvertedIndex) findByToken(t string) {
+func (i *InvertedIndex) FindByToken(t string) {
     docs, _ := i.m[t]
     if docs != nil {
         fmt.Println("Found document")
